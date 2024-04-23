@@ -13,7 +13,7 @@ arch=(x86_64)
 url=""
 license=('unknown')
 groups=()
-depends=(base linux linux-firmware man-db)
+depends=(base linux linux-firmware man-db networkmanager nano)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -35,11 +35,9 @@ validpgpkeys=()
 #	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
 #}
 
-#build() {
-#	cd "$pkgname-$pkgver"
-#	./configure --prefix=/usr
-#	make
-#}
+build() {
+  systemctl enable --now NetworkManager.service
+}
 
 #check() {
 #	cd "$pkgname-$pkgver"
